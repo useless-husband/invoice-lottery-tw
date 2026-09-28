@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 人工編造的測試資料（不是真實開獎結果），用來測試「增開六獎」與壞資料的處理 -->
+<rss version="2.0">
+  <channel>
+    <title><![CDATA[統一發票中獎號碼]]></title>
+    <item>
+      <title><![CDATA[110年 01~02月]]></title>
+      <description><![CDATA[<p>特別獎：11111111</p><p>特獎：22222222</p><p>頭獎：33333333、44444444、55555555</p><p>增開六獎：123、456</p>]]></description>
+    </item>
+    <item>
+      <title><![CDATA[109年 11~12月]]></title>
+      <description><![CDATA[<p>特別獎：1234</p><p>特獎：22222222</p><p>頭獎：33333333</p>]]></description>
+    </item>
+    <item>
+      <title><![CDATA[not a period]]></title>
+      <description><![CDATA[<p>特別獎：11111111</p>]]></description>
+    </item>
+  </channel>
+</rss>
