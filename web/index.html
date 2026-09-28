@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>統一發票對獎小幫手</title>
+<meta name="description" content="貼上號碼或只打末三碼，快速對統一發票中獎號碼。純前端，資料存在本機。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>統一發票對獎小幫手</h1>
+  <p class="sub" id="meta">載入中…</p>
+
+  <label for="period">期別</label>
+  <select id="period"></select>
+  <p class="info" id="periodInfo"></p>
+  <div class="warn" id="periodWarn" hidden></div>
+
+  <details id="numbersBox">
+    <summary>這一期的中獎號碼</summary>
+    <table id="numbersTable"></table>
+  </details>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" id="tabQuick" aria-selected="true" aria-controls="paneQuick">末三碼快速模式</button>
+    <button role="tab" id="tabPaste" aria-selected="false" aria-controls="panePaste">貼上號碼</button>
+  </div>
+
+  <section id="paneQuick" role="tabpanel" aria-labelledby="tabQuick">
+    <label for="last3">發票末三碼</label>
+    <div class="row">
+      <input id="last3" class="big" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="123" aria-describedby="hintQuick">
+      <button id="resetQuick" type="button">重新計算</button>
+    </div>
+    <p class="info" id="hintQuick">輸入滿三碼就會立刻判斷，不用按 Enter。沒中會自動清空換下一張。</p>
+    <div id="fullBox" hidden>
+      <label for="full">可能中獎！請輸入完整 8 碼（或前 5 碼）</label>
+      <div class="row">
+        <input id="full" class="big" style="width:11rem" inputmode="numeric" autocomplete="off" maxlength="12">
+        <button id="fullOk" class="primary" type="button">確認</button>
+        <button id="fullSkip" type="button">略過</button>
+      </div>
+      <p class="info">按 Enter 確認；直接按略過或空白 Enter 表示先不確認。</p>
+    </div>
+    <div class="last" id="lastResult" aria-live="polite"></div>
+    <div class="stats" id="quickStats" aria-live="polite"></div>
+  </section>
+
+  <section id="panePaste" role="tabpanel" aria-labelledby="tabPaste" hidden>
+    <label for="pasteInput">貼上發票號碼（8 碼，可含字軌；用空白、逗號或換行分開）</label>
+    <textarea id="pasteInput" placeholder="AB-12345678&#10;87654321"></textarea>
+    <div class="row"><button id="pasteGo" class="primary" type="button">對獎</button></div>
+    <ul class="results" id="pasteResults" aria-live="polite"></ul>
+    <div class="stats" id="pasteStats" hidden></div>
+  </section>
+
+  <footer>
+    <p>中獎號碼資料來自財政部稅務入口網，由 CLI 指令 <code>invoice export-json</code> 產生。號碼只在你的瀏覽器裡比對，不會上傳。實際兌獎請以財政部公告為準。</p>
+    <p><a href="https://github.com/useless-husband/invoice-lottery-tw">原始碼與命令列版</a></p>
+  </footer>
+</main>
+<script src="lottery.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
