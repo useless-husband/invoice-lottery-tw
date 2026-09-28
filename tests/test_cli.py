@@ -239,7 +239,7 @@ class CommittedDataTests(unittest.TestCase):
             self.assertEqual(o["claim_end"], d.period.claim_end.isoformat())
 
     def test_no_local_paths_in_repo_text_files(self):
-        needle = "/Users/" + "macmini2tb"
+        needle = "/Us" + "ers/" + "macmini" + "2tb"
         for p in ROOT.rglob("*"):
             if p.is_file() and ".git" not in p.parts and p.suffix in {".py", ".md", ".json", ".js", ".html", ".css", ".yml", ".toml"}:
                 self.assertNotIn(needle, p.read_text(encoding="utf-8"), str(p))
