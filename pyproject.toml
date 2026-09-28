@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "invoice-lottery-tw"
+version = "0.1.0"
+description = "Check Taiwan uniform invoice (統一發票) lottery numbers from the command line."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "useless-husband" }]
+keywords = ["taiwan", "invoice", "lottery", "cli"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Environment :: Console",
+]
+
+[project.scripts]
+invoice = "invoice_lottery.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/useless-husband/invoice-lottery-tw"
+
+[tool.setuptools]
+packages = ["invoice_lottery"]
